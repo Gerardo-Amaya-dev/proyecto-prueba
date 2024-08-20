@@ -1,0 +1,2889 @@
+{
+	"info": {
+		"_postman_id": "01f24eaf-b8c8-4587-9648-7d2f6bfd53c1",
+		"name": "Zacate Interno",
+		"description": "API diseñada para gestionar y optimizar los diferentes trámites y procedimientos asociados a la alcaldía de Zacatecoluca. Este conjunto de servicios permite realizar acciones como la creación de usuarios, la autenticación, la asignación y el seguimiento de trámites, la gestión de pagos y la generación de resoluciones. Cada funcionalidad está diseñada para facilitar el flujo de trabajo y asegurar que los procesos internos se ejecuten de manera eficiente y organizada.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25272271",
+		"_collection_link": "https://chivo-dev.postman.co/workspace/ed1a47a6-a448-4538-863f-fca2cd4f2c3c/collection/25628513-01f24eaf-b8c8-4587-9648-7d2f6bfd53c1?action=share&source=collection_link&creator=25272271"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"alessandro.rivas+superadmin@****.****.****\",\n    \"password\": \"*****\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Permite a los usuarios autenticarse en el sistema utilizando sus credenciales de correo electrónico y contraseña. El endpoint devuelve un token JWT en caso de autenticación exitosa, que es necesario para acceder a rutas protegidas de la API."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"alessandro.rivas+superadmin@***.***.**\",\n    \"password\": \"******\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/auth/login",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3phY2F0ZS1pbnRlcm5vLXYyLWJlLWRvdC1nc3YwMTgtMDAyLWRldi5ubi5yLmFwcHNwb3QuY29tL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzI0MDk2NDE5LCJleHAiOjE3MjQxNTQwMTksIm5iZiI6MTcyNDA5NjQxOSwianRpIjoiTWFBeGN5OVlZbk1hWGQ5UCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.HiR_vI-3SGPHDuBTfWFpUooDxRJdH1myThmTkkNGZic; expires=Sat, 28 Sep 2024 19:40:19 GMT; Max-Age=3456000; path=/; secure; httponly; samesite=none"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "bc82e2b95c6873ed33160a3a681bc44d;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:40:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Expires",
+									"value": "Mon, 19 Aug 2024 19:40:19 GMT"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token_type\": \"bearer\",\n    \"expires_in\": 57600\n}"
+						}
+					]
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gerardo Amaya\",\n    \"email\": \"gerardoamayas****gmail.com\",\n    \"dui\": \"06081***-*\",\n    \"birthdate\": \"2000-10-17\",\n    \"password\": \"******\",\n    \"password_confirmation\": \"******\",\n        \"services_roles\": [\n        {\n            \"service_id\": 1,\n            \"role_id\": 2\n        },\n        {\n            \"service_id\": 3,\n            \"role_id\": 4\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Permite el registro de un nuevo usuario en el sistema. El usuario debe proporcionar información básica, como nombre, correo electrónico, fecha de nacimiento, y establecer una contraseña. También es posible asignar roles y servicios durante el registro."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Gerardo Amaya\",\n    \"email\": \"gerardoamayasv2000@gmail.com\",\n    \"dui\": \"0608***-**\",\n    \"birthdate\": \"2000-10-17\",\n    \"password\": \"******\",\n    \"password_confirmation\": \"*****\",\n        \"services_roles\": [\n        {\n            \"service_id\": 1,\n            \"role_id\": 2\n        },\n        {\n            \"service_id\": 3,\n            \"role_id\": 4\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/auth/signup",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "e7d38f6b09301eb58fe36118e2d79753;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 20:32:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "311"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"CREATED\",\n    \"data\": {\n        \"name\": \"GE***** AL***** AM*** FU*****\",\n        \"email\": \"gerardoamayasv2000@gmail.com\",\n        \"dui\": \"06081265-3\",\n        \"birthdate\": \"2000-10-17\",\n        \"updated_at\": \"2024-08-19T20:32:03.000000Z\",\n        \"created_at\": \"2024-08-19T20:32:03.000000Z\",\n        \"id\": 5\n    },\n    \"given\": \"2024-08-19 14:32:04 America/El_Salvador\",\n    \"consumes\": 2.64\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						},
+						"description": "Proporciona los detalles del usuario autenticado actualmente. Este endpoint devuelve información como el nombre, el correo electrónico, y otros detalles relevantes del usuario. Es necesario enviar el token de acceso en los encabezados de la solicitud."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/auth/me",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "9d594e415d4f60d4e0573a8d1850847a;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:41:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"FR*** AL******** OR*** RI***\",\n    \"email\": \"alessandro.rivas+superadmin@goes.gob.sv\",\n    \"dui\": \"05770381-1\",\n    \"birthdate\": \"1998-09-10\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2024-08-08T14:55:53.000000Z\",\n    \"updated_at\": \"2024-08-08T14:55:53.000000Z\",\n    \"roles\": [\n        1,\n        8,\n        14,\n        15,\n        16,\n        17\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "Cierra la sesión del usuario autenticado, invalidando el token JWT asociado. Después de utilizar este endpoint, el usuario necesitará autenticarse nuevamente para acceder a rutas protegidas."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/auth/logout",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "auth_token=deleted; expires=Sun, 20 Aug 2023 19:41:46 GMT; Max-Age=0; path=/; secure; httponly; samesite=lax"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "13dd55bf6f7412c0261c45eb943008cd;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:41:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Expires",
+									"value": "Mon, 19 Aug 2024 19:41:47 GMT"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully logged out\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Window payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procedure_id\": 7,\n    \"payment_type_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/window_payment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"window_payment"
+							]
+						},
+						"description": "Registra un pago realizado por ventanilla para un procedimiento específico. Este endpoint recibe el ID del procedimiento y el tipo de pago, y actualiza el estado del procedimiento en el sistema para reflejar que se ha realizado un pago por ventanilla."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"procedure_id\": 7,\n    \"payment_type_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/window_payment",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"window_payment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "ed7bd268e93e9067f59aa16e44b8ab8b"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:42:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Pago realizado correctamente\",\n    \"given\": \"2024-08-19 13:42:46 America/El_Salvador\",\n    \"consumes\": 1.45\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Approve and deny",
+			"item": [
+				{
+					"name": "Approve",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"procedure_id\": 7,\r\n    \"commentary\": \"Aprobado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/approve_procedure",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"approve_procedure"
+							]
+						},
+						"description": "Se utiliza para aprobar un procedimiento específico. Recibe el ID del procedimiento y un comentario opcional que puede incluir detalles adicionales sobre la aprobación. Al utilizar este endpoint, se cambia el estado del procedimiento a \"aprobado\" en el sistema."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"procedure_id\": 7,\r\n    \"commentary\": \"Aprobado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/approve_procedure",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"approve_procedure"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "96f64cad680917727065398f4867947b;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:43:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Trámite aprobado correctamente\",\n    \"given\": \"2024-08-19 13:43:13 America/El_Salvador\",\n    \"consumes\": 1.11\n}"
+						}
+					]
+				},
+				{
+					"name": "Deny",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"procedure_id\": 7,\r\n    \"commentary\": \"No cumplió los requisitos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/reject_procedure",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"reject_procedure"
+							]
+						},
+						"description": "Este endpoint se utiliza para rechazar un procedimiento específico en el sistema. Al enviar el ID del procedimiento, se cambia el estado del mismo a \"rechazado\". Este endpoint es útil para gestionar solicitudes o procesos que no cumplen con los requisitos necesarios o que han sido revisados y se decidió no continuar con ellos."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"procedure_id\": 7,\r\n    \"commentary\": \"No cumplió los requisitos\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/reject_procedure",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"reject_procedure"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "6c15e146ee7c0cceed48540c71faa00f;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:44:10 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Trámite rechazado correctamente\",\n    \"given\": \"2024-08-19 13:44:10 America/El_Salvador\",\n    \"consumes\": 1.23\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Observations",
+			"item": [
+				{
+					"name": "Create observation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procedure_id\": 7,\n    \"observation\": \"Corrija todo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/observations/save",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"observations",
+								"save"
+							]
+						},
+						"description": "Permite agregar una observación a un procedimiento específico. Las observaciones son útiles para proporcionar retroalimentación, solicitar correcciones, o documentar cualquier información relevante que deba ser tomada en cuenta durante el proceso de revisión o aprobación del procedimiento."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"procedure_id\": 7,\n    \"observation\": \"Corrija todo\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/observations/save",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"observations",
+										"save"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "d5f1cdaf7eff9c745603ea9277496c9f;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:44:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Observacion creada correctamente\",\n    \"given\": \"2024-08-19 13:44:37 America/El_Salvador\",\n    \"consumes\": 1.17\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inspections",
+			"item": [
+				{
+					"name": "Create inspection",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "inspection_date",
+									"value": "2024-10-29",
+									"type": "text"
+								},
+								{
+									"key": "inspection_hour",
+									"value": "09:00",
+									"type": "text"
+								},
+								{
+									"key": "procedure_id",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "inspection_comment",
+									"value": "Su tramite paso a inspeccion, mire la fecha",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/inspections/save",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"inspections",
+								"save"
+							]
+						},
+						"description": "Registra una nueva inspección para un procedimiento específico, incluyendo la fecha y hora de la inspección, así como un comentario adicional si es necesario. Esta acción permite programar y documentar las inspecciones en el sistema."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "inspection_date",
+											"value": "2024-10-29",
+											"type": "text"
+										},
+										{
+											"key": "inspection_hour",
+											"value": "09:00",
+											"type": "text"
+										},
+										{
+											"key": "procedure_id",
+											"value": "7",
+											"type": "text"
+										},
+										{
+											"key": "inspection_comment",
+											"value": "Su tramite paso a inspeccion, mire la fecha",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/inspections/save",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"inspections",
+										"save"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "c6acd07d8b48f3cd0ef953dd77131bd1;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:44:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Inspección creada correctamente\",\n    \"given\": \"2024-08-19 13:44:55 America/El_Salvador\",\n    \"consumes\": 1.16\n}"
+						}
+					]
+				},
+				{
+					"name": "Declare inspection",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "inspection_id",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "commentary",
+									"value": "Documento subido, Inspeccionado.",
+									"type": "text"
+								},
+								{
+									"key": "inspection_file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4e865-1071-4ea0-a864-cea5de8b90f0"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/inspections/save_file",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"inspections",
+								"save_file"
+							]
+						},
+						"description": "Permite subir un archivo relacionado con una inspección específica. Este archivo puede incluir documentos, imágenes u otros tipos de evidencias que son necesarias para completar o documentar el proceso de inspección."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "inspection_id",
+											"value": "22",
+											"type": "text"
+										},
+										{
+											"key": "commentary",
+											"value": "Documento subido, Inspeccionado.",
+											"type": "text"
+										},
+										{
+											"key": "inspection_file",
+											"type": "file",
+											"src": "postman-cloud:///1ef4e865-1071-4ea0-a864-cea5de8b90f0"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/inspections/save_file",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"inspections",
+										"save_file"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "f6e122ba91993e3f73bdb0ad4b017a9a"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:54:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Archivo de inspección guardado correctamente\",\n    \"given\": \"2024-08-19 13:54:31 America/El_Salvador\",\n    \"consumes\": 2.74\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Assign procedures",
+			"item": [
+				{
+					"name": "Auto assign procedure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procedure_id\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/auto_assign_procedure",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"auto_assign_procedure"
+							]
+						},
+						"description": "Asigna automáticamente un trámite a un usuario. Esta funcionalidad asegura que los trámites sean asignados al mismo usuario logueado, controlado por uno mismo"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"procedure_id\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/auto_assign_procedure",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"auto_assign_procedure"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "ce5cebff11ddd242458692d1ad758296"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:55:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Trámite asignado correctamente\",\n    \"given\": \"2024-08-19 13:55:06 America/El_Salvador\",\n    \"consumes\": 1.34\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Procedure",
+			"item": [
+				{
+					"name": "All procedures",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/procedures",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"procedures"
+							]
+						},
+						"description": "Recupera una lista completa de todos los trámites registrados en el sistema, proporcionando información general sobre cada uno. Esta funcionalidad es útil para tener una visión global del estado y progreso de los diferentes trámites."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/procedures_approved_and_resolution",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"procedures_approved_and_resolution"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.21"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 00:28:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 59,\n                \"entity_id\": 41,\n                \"procedures_information\": {\n                    \"project\": {\n                        \"name\": \"solvencia de mi prima\",\n                        \"acount_number\": null,\n                        \"register_number\": \"1j2nadskl10\"\n                    },\n                    \"deceased_person\": {\n                        \"name\": null,\n                        \"document\": null,\n                        \"birthdate\": null\n                    }\n                },\n                \"created_at\": \"2024-08-02T13:52:25.000000Z\",\n                \"procedures_type\": 1,\n                \"responsible_professional_id\": null,\n                \"property_owner_id\": null,\n                \"historical_procedure_id\": 186,\n                \"entity\": {\n                    \"id\": 41,\n                    \"name\": \"CL***** BE***** RO******* PI****\"\n                },\n                \"actual_historical_procedure\": {\n                    \"id\": 186,\n                    \"procedure_id\": 59,\n                    \"status_id\": 9,\n                    \"technical_user_id\": 1,\n                    \"stage_id\": null,\n                    \"commentary\": null,\n                    \"active\": 1,\n                    \"created_at\": \"2024-08-10T18:18:10.000000Z\",\n                    \"updated_at\": \"2024-08-10T18:18:10.000000Z\",\n                    \"status\": {\n                        \"id\": 9,\n                        \"name\": \"Aprobado\"\n                    }\n                }\n            },\n            {\n                \"id\": 149,\n                \"entity_id\": 62,\n                \"procedures_information\": {\n                    \"project\": {\n                        \"name\": \"km menendez\",\n                        \"description\": \"venta de productos varios\",\n                        \"total_place_area\": \"300\",\n                        \"total_develop_area\": \"200\"\n                    },\n                    \"location\": {\n                        \"address\": \"zacatecoluca\",\n                        \"latitude\": \"13.507405829435195\",\n                        \"longitude\": \"-88.86926651000978\",\n                        \"rural_use\": \"Habitacional\",\n                        \"urban_use\": \"Zona edificada\",\n                        \"property_of\": \"HERNANDEZ, JESUS (Libro de Propiedad-->59/1010)\",\n                        \"parcela_area\": \"249.34\",\n                        \"clave_catastral\": \"0821U16-91\",\n                        \"centro_historico\": \"1\"\n                    }\n                },\n                \"created_at\": \"2024-08-10T04:36:08.000000Z\",\n                \"procedures_type\": 5,\n                \"responsible_professional_id\": 12,\n                \"property_owner_id\": 13,\n                \"historical_procedure_id\": 173,\n                \"entity\": {\n                    \"id\": 62,\n                    \"name\": \"KR** MA***** ME****** CA*******\"\n                },\n                \"actual_historical_procedure\": {\n                    \"id\": 173,\n                    \"procedure_id\": 149,\n                    \"status_id\": 10,\n                    \"technical_user_id\": null,\n                    \"stage_id\": null,\n                    \"commentary\": null,\n                    \"active\": 1,\n                    \"created_at\": \"2024-08-10T04:36:08.000000Z\",\n                    \"updated_at\": \"2024-08-10T04:36:08.000000Z\",\n                    \"status\": {\n                        \"id\": 10,\n                        \"name\": \"En resolución\"\n                    }\n                }\n            },\n            {\n                \"id\": 150,\n                \"entity_id\": 62,\n                \"procedures_information\": {\n                    \"project\": {\n                        \"name\": \"km menendezs\",\n                        \"type\": \"2\",\n                        \"description\": \"venta de productos\",\n                        \"total_budget\": \"200\",\n                        \"total_develop_area\": \"100\"\n                    },\n                    \"location\": {\n                        \"address\": \"zacatecoluca\",\n                        \"latitude\": \"13.505402862886086\",\n                        \"longitude\": \"-88.87089729309083\",\n                        \"rural_use\": \"Comercio y Servicios\",\n                        \"urban_use\": \"Zona edificada\",\n                        \"property_of\": \"VALLE FUENTES, GUMERCINDO (Libro de Propiedad-->110/210); VELASQUEZ DE VALLE, INES BEATRIZ(Libro de Propiedad-->110/210)\",\n                        \"parcela_area\": \"304.9469\",\n                        \"clave_catastral\": \"0821U17-744\",\n                        \"centro_historico\": \"0\"\n                    }\n                },\n                \"created_at\": \"2024-08-10T05:09:09.000000Z\",\n                \"procedures_type\": 3,\n                \"responsible_professional_id\": 12,\n                \"property_owner_id\": 13,\n                \"historical_procedure_id\": 174,\n                \"entity\": {\n                    \"id\": 62,\n                    \"name\": \"KR** MA***** ME****** CA*******\"\n                },\n                \"actual_historical_procedure\": {\n                    \"id\": 174,\n                    \"procedure_id\": 150,\n                    \"status_id\": 10,\n                    \"technical_user_id\": null,\n                    \"stage_id\": null,\n                    \"commentary\": null,\n                    \"active\": 1,\n                    \"created_at\": \"2024-08-10T05:09:12.000000Z\",\n                    \"updated_at\": \"2024-08-10T05:09:12.000000Z\",\n                    \"status\": {\n                        \"id\": 10,\n                        \"name\": \"En resolución\"\n                    }\n                }\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 3,\n        \"total\": 3\n    },\n    \"given\": \"2024-08-12 00:28:04 UTC\",\n    \"consumes\": 0.81\n}"
+						}
+					]
+				},
+				{
+					"name": "Find procedure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"procedure_id\" : 7\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/procedure_summary",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"procedure_summary"
+							]
+						},
+						"description": "Proporciona un resumen técnico detallado de un trámite específico, identificando todos los aspectos relevantes asociados con el procedimiento. Este resumen incluye información técnica que es crucial para la evaluación y toma de decisiones sobre el trámite."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"procedure_id\" : 7\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/procedure_summary",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"procedure_summary"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "2d57b6b90797d690d4917990f79eed82"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:55:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"id\": 7,\n        \"procedure_num\": \"RT-2024-08-19-7\",\n        \"procedures_information\": {\n            \"project\": {\n                \"name\": \"ajksdajksdajkdadjk\",\n                \"description\": \"jasjkadjkadsjkad\",\n                \"total_budget\": \"1221\",\n                \"total_develop_area\": \"1212\"\n            },\n            \"location\": {\n                \"address\": \"Una direccion cambiada\",\n                \"latitude\": \"13.505884497758343\",\n                \"longitude\": \"-88.87497399948121\",\n                \"rural_use\": \"Habitacional\",\n                \"urban_use\": \"Zona edificada\",\n                \"property_of\": \"RAMIREZ DEL CID, FRANCISCO ANTONIO(SIRyC-RPRH-->55074018-00000)\",\n                \"parcela_area\": \"1133.1708\",\n                \"clave_catastral\": \"0821U15-613\",\n                \"centro_historico\": \"0\"\n            }\n        },\n        \"procedures_type\": {\n            \"id\": 2,\n            \"name\": \"Rotulación\"\n        },\n        \"is_payed\": 1,\n        \"is_archived\": 0,\n        \"created_at\": \"2024-08-19T16:46:24.000000Z\",\n        \"entity\": {\n            \"id\": 80,\n            \"name\": \"RE** AL***** VA***** CO*****\",\n            \"email\": \"alessandro.rivas+usuarioprueba2@goes.gob.sv\",\n            \"user_id\": null,\n            \"user\": null\n        },\n        \"property_owner\": {\n            \"id\": 20,\n            \"name\": \"AN**** AL***** CA**** GA****\"\n        },\n        \"responsible_professional\": {\n            \"id\": 21,\n            \"name\": \"JE**** ER***** ZE**** VI******\"\n        },\n        \"historical_procedure\": [\n            {\n                \"id\": 358,\n                \"procedure_id\": 7,\n                \"status_id\": 1,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T16:46:28.000000Z\",\n                \"updated_at\": \"2024-08-19T16:46:28.000000Z\",\n                \"status\": {\n                    \"id\": 1,\n                    \"name\": \"Pendiente de pago\"\n                }\n            },\n            {\n                \"id\": 360,\n                \"procedure_id\": 7,\n                \"status_id\": 2,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:05:03.000000Z\",\n                \"updated_at\": \"2024-08-19T17:05:03.000000Z\",\n                \"status\": {\n                    \"id\": 2,\n                    \"name\": \"Iniciado\"\n                }\n            },\n            {\n                \"id\": 361,\n                \"procedure_id\": 7,\n                \"status_id\": 3,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:05:40.000000Z\",\n                \"updated_at\": \"2024-08-19T17:05:40.000000Z\",\n                \"status\": {\n                    \"id\": 3,\n                    \"name\": \"En revisión\"\n                }\n            },\n            {\n                \"id\": 362,\n                \"procedure_id\": 7,\n                \"status_id\": 4,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:06:47.000000Z\",\n                \"updated_at\": \"2024-08-19T17:06:47.000000Z\",\n                \"status\": {\n                    \"id\": 4,\n                    \"name\": \"Observado\"\n                }\n            },\n            {\n                \"id\": 363,\n                \"procedure_id\": 7,\n                \"status_id\": 5,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:07:38.000000Z\",\n                \"updated_at\": \"2024-08-19T17:07:38.000000Z\",\n                \"status\": {\n                    \"id\": 5,\n                    \"name\": \"Subsanado\"\n                }\n            },\n            {\n                \"id\": 364,\n                \"procedure_id\": 7,\n                \"status_id\": 6,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:09:29.000000Z\",\n                \"updated_at\": \"2024-08-19T17:09:29.000000Z\",\n                \"status\": {\n                    \"id\": 6,\n                    \"name\": \"En inspección\"\n                }\n            },\n            {\n                \"id\": 365,\n                \"procedure_id\": 7,\n                \"status_id\": 7,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:16:03.000000Z\",\n                \"updated_at\": \"2024-08-19T17:16:03.000000Z\",\n                \"status\": {\n                    \"id\": 7,\n                    \"name\": \"Inspeccionado\"\n                }\n            },\n            {\n                \"id\": 366,\n                \"procedure_id\": 7,\n                \"status_id\": 9,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:16:21.000000Z\",\n                \"updated_at\": \"2024-08-19T17:16:21.000000Z\",\n                \"status\": {\n                    \"id\": 9,\n                    \"name\": \"Aprobado\"\n                }\n            },\n            {\n                \"id\": 367,\n                \"procedure_id\": 7,\n                \"status_id\": 11,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:16:51.000000Z\",\n                \"updated_at\": \"2024-08-19T17:16:51.000000Z\",\n                \"status\": {\n                    \"id\": 11,\n                    \"name\": \"Finalizado\"\n                }\n            },\n            {\n                \"id\": 372,\n                \"procedure_id\": 7,\n                \"status_id\": 2,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:42:45.000000Z\",\n                \"updated_at\": \"2024-08-19T19:42:45.000000Z\",\n                \"status\": {\n                    \"id\": 2,\n                    \"name\": \"Iniciado\"\n                }\n            },\n            {\n                \"id\": 373,\n                \"procedure_id\": 7,\n                \"status_id\": 9,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:43:13.000000Z\",\n                \"updated_at\": \"2024-08-19T19:43:13.000000Z\",\n                \"status\": {\n                    \"id\": 9,\n                    \"name\": \"Aprobado\"\n                }\n            },\n            {\n                \"id\": 374,\n                \"procedure_id\": 7,\n                \"status_id\": 8,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:44:10.000000Z\",\n                \"updated_at\": \"2024-08-19T19:44:10.000000Z\",\n                \"status\": {\n                    \"id\": 8,\n                    \"name\": \"Denegado\"\n                }\n            },\n            {\n                \"id\": 375,\n                \"procedure_id\": 7,\n                \"status_id\": 4,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:44:37.000000Z\",\n                \"updated_at\": \"2024-08-19T19:44:37.000000Z\",\n                \"status\": {\n                    \"id\": 4,\n                    \"name\": \"Observado\"\n                }\n            },\n            {\n                \"id\": 376,\n                \"procedure_id\": 7,\n                \"status_id\": 6,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:44:54.000000Z\",\n                \"updated_at\": \"2024-08-19T19:44:54.000000Z\",\n                \"status\": {\n                    \"id\": 6,\n                    \"name\": \"En inspección\"\n                }\n            },\n            {\n                \"id\": 377,\n                \"procedure_id\": 7,\n                \"status_id\": 7,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:54:30.000000Z\",\n                \"updated_at\": \"2024-08-19T19:54:30.000000Z\",\n                \"status\": {\n                    \"id\": 7,\n                    \"name\": \"Inspeccionado\"\n                }\n            },\n            {\n                \"id\": 378,\n                \"procedure_id\": 7,\n                \"status_id\": 3,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:55:05.000000Z\",\n                \"updated_at\": \"2024-08-19T19:55:05.000000Z\",\n                \"status\": {\n                    \"id\": 3,\n                    \"name\": \"En revisión\"\n                }\n            }\n        ],\n        \"observations\": [\n            {\n                \"id\": 51,\n                \"observation\": \"Observado por primera vez\",\n                \"procedure_id\": 7,\n                \"technical_id\": 1,\n                \"is_pending\": 0,\n                \"is_revision\": 0,\n                \"is_approved\": 0,\n                \"is_rejected\": 0,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:06:47.000000Z\"\n            },\n            {\n                \"id\": 52,\n                \"observation\": \"Corrija todo\",\n                \"procedure_id\": 7,\n                \"technical_id\": 1,\n                \"is_pending\": 1,\n                \"is_revision\": 0,\n                \"is_approved\": 0,\n                \"is_rejected\": 0,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:44:37.000000Z\"\n            }\n        ],\n        \"inspections\": [\n            {\n                \"id\": 21,\n                \"inspection_date\": \"2024-12-10\",\n                \"inspection_hour\": \"10:45:00\",\n                \"inspector_id\": 1,\n                \"inspection_comment\": \"Prueba de inspeccion\",\n                \"procedure_id\": 7,\n                \"inspector\": {\n                    \"id\": 1,\n                    \"name\": \"FR*** AL******** OR*** RI***\",\n                    \"email\": \"alessandro.rivas+superadmin@goes.gob.sv\"\n                },\n                \"inspection_signed\": {\n                    \"inspection_id\": 21,\n                    \"commentary\": \"Se ha emtido una resolucin\"\n                }\n            },\n            {\n                \"id\": 22,\n                \"inspection_date\": \"2024-10-29\",\n                \"inspection_hour\": \"09:00:00\",\n                \"inspector_id\": 1,\n                \"inspection_comment\": \"Su tramite paso a inspeccion, mire la fecha\",\n                \"procedure_id\": 7,\n                \"inspector\": {\n                    \"id\": 1,\n                    \"name\": \"FR*** AL******** OR*** RI***\",\n                    \"email\": \"alessandro.rivas+superadmin@goes.gob.sv\"\n                },\n                \"inspection_signed\": {\n                    \"inspection_id\": 22,\n                    \"commentary\": \"Documento subido, Inspeccionado.\"\n                }\n            }\n        ]\n    },\n    \"given\": \"2024-08-19 13:55:42 America/El_Salvador\",\n    \"consumes\": 1.26\n}"
+						}
+					]
+				},
+				{
+					"name": "Tramites aprobados y en resolucion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/procedures_approved_and_resolution",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"procedures_approved_and_resolution"
+							]
+						},
+						"description": "Recupera una lista de todos los trámites que han sido aprobados y que están actualmente en proceso de resolución. Esta funcionalidad es útil para monitorear el estado y el progreso de los trámites que ya han pasado por la fase de aprobación y están en la etapa final de resolución."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/procedures_approved_and_resolution",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"procedures_approved_and_resolution"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.21"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 00:28:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 59,\n                \"entity_id\": 41,\n                \"procedures_information\": {\n                    \"project\": {\n                        \"name\": \"solvencia de mi prima\",\n                        \"acount_number\": null,\n                        \"register_number\": \"1j2nadskl10\"\n                    },\n                    \"deceased_person\": {\n                        \"name\": null,\n                        \"document\": null,\n                        \"birthdate\": null\n                    }\n                },\n                \"created_at\": \"2024-08-02T13:52:25.000000Z\",\n                \"procedures_type\": 1,\n                \"responsible_professional_id\": null,\n                \"property_owner_id\": null,\n                \"historical_procedure_id\": 186,\n                \"entity\": {\n                    \"id\": 41,\n                    \"name\": \"CL***** BE***** RO******* PI****\"\n                },\n                \"actual_historical_procedure\": {\n                    \"id\": 186,\n                    \"procedure_id\": 59,\n                    \"status_id\": 9,\n                    \"technical_user_id\": 1,\n                    \"stage_id\": null,\n                    \"commentary\": null,\n                    \"active\": 1,\n                    \"created_at\": \"2024-08-10T18:18:10.000000Z\",\n                    \"updated_at\": \"2024-08-10T18:18:10.000000Z\",\n                    \"status\": {\n                        \"id\": 9,\n                        \"name\": \"Aprobado\"\n                    }\n                }\n            },\n            {\n                \"id\": 149,\n                \"entity_id\": 62,\n                \"procedures_information\": {\n                    \"project\": {\n                        \"name\": \"km menendez\",\n                        \"description\": \"venta de productos varios\",\n                        \"total_place_area\": \"300\",\n                        \"total_develop_area\": \"200\"\n                    },\n                    \"location\": {\n                        \"address\": \"zacatecoluca\",\n                        \"latitude\": \"13.507405829435195\",\n                        \"longitude\": \"-88.86926651000978\",\n                        \"rural_use\": \"Habitacional\",\n                        \"urban_use\": \"Zona edificada\",\n                        \"property_of\": \"HERNANDEZ, JESUS (Libro de Propiedad-->59/1010)\",\n                        \"parcela_area\": \"249.34\",\n                        \"clave_catastral\": \"0821U16-91\",\n                        \"centro_historico\": \"1\"\n                    }\n                },\n                \"created_at\": \"2024-08-10T04:36:08.000000Z\",\n                \"procedures_type\": 5,\n                \"responsible_professional_id\": 12,\n                \"property_owner_id\": 13,\n                \"historical_procedure_id\": 173,\n                \"entity\": {\n                    \"id\": 62,\n                    \"name\": \"KR** MA***** ME****** CA*******\"\n                },\n                \"actual_historical_procedure\": {\n                    \"id\": 173,\n                    \"procedure_id\": 149,\n                    \"status_id\": 10,\n                    \"technical_user_id\": null,\n                    \"stage_id\": null,\n                    \"commentary\": null,\n                    \"active\": 1,\n                    \"created_at\": \"2024-08-10T04:36:08.000000Z\",\n                    \"updated_at\": \"2024-08-10T04:36:08.000000Z\",\n                    \"status\": {\n                        \"id\": 10,\n                        \"name\": \"En resolución\"\n                    }\n                }\n            },\n            {\n                \"id\": 150,\n                \"entity_id\": 62,\n                \"procedures_information\": {\n                    \"project\": {\n                        \"name\": \"km menendezs\",\n                        \"type\": \"2\",\n                        \"description\": \"venta de productos\",\n                        \"total_budget\": \"200\",\n                        \"total_develop_area\": \"100\"\n                    },\n                    \"location\": {\n                        \"address\": \"zacatecoluca\",\n                        \"latitude\": \"13.505402862886086\",\n                        \"longitude\": \"-88.87089729309083\",\n                        \"rural_use\": \"Comercio y Servicios\",\n                        \"urban_use\": \"Zona edificada\",\n                        \"property_of\": \"VALLE FUENTES, GUMERCINDO (Libro de Propiedad-->110/210); VELASQUEZ DE VALLE, INES BEATRIZ(Libro de Propiedad-->110/210)\",\n                        \"parcela_area\": \"304.9469\",\n                        \"clave_catastral\": \"0821U17-744\",\n                        \"centro_historico\": \"0\"\n                    }\n                },\n                \"created_at\": \"2024-08-10T05:09:09.000000Z\",\n                \"procedures_type\": 3,\n                \"responsible_professional_id\": 12,\n                \"property_owner_id\": 13,\n                \"historical_procedure_id\": 174,\n                \"entity\": {\n                    \"id\": 62,\n                    \"name\": \"KR** MA***** ME****** CA*******\"\n                },\n                \"actual_historical_procedure\": {\n                    \"id\": 174,\n                    \"procedure_id\": 150,\n                    \"status_id\": 10,\n                    \"technical_user_id\": null,\n                    \"stage_id\": null,\n                    \"commentary\": null,\n                    \"active\": 1,\n                    \"created_at\": \"2024-08-10T05:09:12.000000Z\",\n                    \"updated_at\": \"2024-08-10T05:09:12.000000Z\",\n                    \"status\": {\n                        \"id\": 10,\n                        \"name\": \"En resolución\"\n                    }\n                }\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://localhost:8000/api/internal/procedures_approved_and_resolution\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 3,\n        \"total\": 3\n    },\n    \"given\": \"2024-08-12 00:28:04 UTC\",\n    \"consumes\": 0.81\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Archive",
+			"item": [
+				{
+					"name": "Archive procedure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"procedure_id\" : 7\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/archived_procedure",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"archived_procedure"
+							]
+						},
+						"description": "Permite archivar un trámite específico, moviéndolo a un estado en el que ya no requiere más acciones y quedará registrado como completado o inactivo. Este proceso es útil para mantener el sistema organizado y asegurar que solo los trámites activos estén visibles en las operaciones diarias."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"procedure_id\" : 7\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/archived_procedure",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"archived_procedure"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "b4b61ceb4563b1766d1b1f7f85773ac6;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:56:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Trámite archivado correctamente\",\n    \"given\": \"2024-08-19 13:56:45 America/El_Salvador\",\n    \"consumes\": 0.62\n}"
+						}
+					]
+				},
+				{
+					"name": "Get archive procedures",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/get_archived_procedures",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"get_archived_procedures"
+							]
+						},
+						"description": "Recupera una lista de todos los trámites que han sido archivados en el sistema. Esta funcionalidad es útil para revisar y gestionar los trámites que ya no están activos, permitiendo acceder a su historial o reactivarlos si es necesario."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/get_archived_procedures",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"get_archived_procedures"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.21"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 01:43:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"procedures\": [\n            {\n                \"id\": 145,\n                \"entity_name\": \"GE***** AL***** AM*** FU*****\",\n                \"procedure_type\": 1,\n                \"status_id\": 3,\n                \"created_at\": \"2024-08-09T11:45:55.000000Z\"\n            },\n            {\n                \"id\": 146,\n                \"entity_name\": \"NO* HU****** MA****** CO****\",\n                \"procedure_type\": 2,\n                \"status_id\": 3,\n                \"created_at\": \"2024-08-09T11:47:35.000000Z\"\n            },\n            {\n                \"id\": 147,\n                \"entity_name\": \"KR** MA***** ME****** CA*******\",\n                \"procedure_type\": 1,\n                \"status_id\": 1,\n                \"created_at\": \"2024-08-10T03:28:25.000000Z\"\n            },\n            {\n                \"id\": 148,\n                \"entity_name\": \"KR** MA***** ME****** CA*******\",\n                \"procedure_type\": 2,\n                \"status_id\": 1,\n                \"created_at\": \"2024-08-10T04:06:38.000000Z\"\n            },\n            {\n                \"id\": 149,\n                \"entity_name\": \"KR** MA***** ME****** CA*******\",\n                \"procedure_type\": 5,\n                \"status_id\": 10,\n                \"created_at\": \"2024-08-10T04:36:08.000000Z\"\n            },\n            {\n                \"id\": 150,\n                \"entity_name\": \"KR** MA***** ME****** CA*******\",\n                \"procedure_type\": 3,\n                \"status_id\": 10,\n                \"created_at\": \"2024-08-10T05:09:09.000000Z\"\n            }\n        ],\n        \"paginate\": {\n            \"total\": 6,\n            \"perPage\": 10,\n            \"currentPage\": 1,\n            \"lastPage\": 1,\n            \"firstItem\": 1,\n            \"lastItem\": 6,\n            \"nextPageUrl\": null,\n            \"previousPageUrl\": null\n        }\n    },\n    \"given\": \"2024-08-12 01:43:28 UTC\",\n    \"consumes\": 0.77\n}"
+						}
+					]
+				},
+				{
+					"name": "Unarchive procedure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procedure_id\" : 7\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/internal/unarchive_procedure",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"internal",
+								"unarchive_procedure"
+							]
+						},
+						"description": "Permite reactivar un trámite previamente archivado, devolviéndolo a un estado activo dentro del sistema. Esta funcionalidad es útil cuando se necesita retomar la gestión o el procesamiento de un trámite que fue archivado pero que requiere nuevas acciones."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"procedure_id\" : 7\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/internal/unarchive_procedure",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"internal",
+										"unarchive_procedure"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "bec28e4e56a00126aa734dd46b0017ae;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:57:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": \"Trámite desarchivado correctamente\",\n    \"given\": \"2024-08-19 13:57:46 America/El_Salvador\",\n    \"consumes\": 0.63\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/get",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"get"
+							]
+						},
+						"description": "Recupera todas las notificaciones recibidas por el usuario autenticado."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/notifications/get",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"notifications",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "7bc811ff2b3bb08259b11199dbb22ef8;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:58:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": [\n        {\n            \"id\": 559,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 7,\n            \"message\": \"Trámite #7 de Rotulación asignado correctamente\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T19:55:06.000000Z\",\n            \"updated_at\": \"2024-08-19T19:55:06.000000Z\"\n        },\n        {\n            \"id\": 549,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 6,\n            \"message\": \"Trámite #6 de Construcción Obra menor ha cambiado a estado: #[Estado]\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T17:18:09.000000Z\",\n            \"updated_at\": \"2024-08-19T17:18:09.000000Z\"\n        },\n        {\n            \"id\": 547,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 6,\n            \"message\": \"Trámite #6 de Construcción Obra menor asignado correctamente\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T17:17:46.000000Z\",\n            \"updated_at\": \"2024-08-19T17:17:46.000000Z\"\n        },\n        {\n            \"id\": 538,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 7,\n            \"message\": \"Tramite #7 de Rotulación ha recibido una respuesta a la observación\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T17:07:38.000000Z\",\n            \"updated_at\": \"2024-08-19T17:07:38.000000Z\"\n        },\n        {\n            \"id\": 536,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 7,\n            \"message\": \"Trámite #7 de Rotulación asignado correctamente\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T17:05:41.000000Z\",\n            \"updated_at\": \"2024-08-19T17:05:41.000000Z\"\n        }\n    ],\n    \"given\": \"2024-08-19 13:58:01 America/El_Salvador\",\n    \"consumes\": 0.48\n}"
+						}
+					]
+				},
+				{
+					"name": "Get last five unreaded",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/get_last_notifications",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"get_last_notifications"
+							]
+						},
+						"description": "Obtiene las cinco notificaciones más recientes del usuario autenticado."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/notifications/get_last_notifications",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"notifications",
+										"get_last_notifications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "54b6cc801f6a96bb8281df1b00575561;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:58:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": [\n        {\n            \"id\": 559,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 7,\n            \"message\": \"Trámite #7 de Rotulación asignado correctamente\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T19:55:06.000000Z\",\n            \"updated_at\": \"2024-08-19T19:55:06.000000Z\"\n        },\n        {\n            \"id\": 549,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 6,\n            \"message\": \"Trámite #6 de Construcción Obra menor ha cambiado a estado: #[Estado]\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T17:18:09.000000Z\",\n            \"updated_at\": \"2024-08-19T17:18:09.000000Z\"\n        },\n        {\n            \"id\": 547,\n            \"user_id\": null,\n            \"technical_id\": 1,\n            \"procedure_id\": 6,\n            \"message\": \"Trámite #6 de Construcción Obra menor asignado correctamente\",\n            \"is_read\": 0,\n            \"created_at\": \"2024-08-19T17:17:46.000000Z\",\n            \"updated_at\": \"2024-08-19T17:17:46.000000Z\"\n        }\n    ],\n    \"given\": \"2024-08-19 13:58:12 America/El_Salvador\",\n    \"consumes\": 0.49\n}"
+						}
+					]
+				},
+				{
+					"name": "Mark as read by ID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"notification_id\" : 559\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/markAsRead",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"markAsRead"
+							]
+						},
+						"description": "Marca una notificación específica como leída."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"notification_id\" : 559\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/notifications/markAsRead",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"notifications",
+										"markAsRead"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "9c16514e12b3085e5201b349a8cd6f65"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 19:59:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"message\": \"Notificación marcada como leída\"\n    },\n    \"given\": \"2024-08-19 13:59:09 America/El_Salvador\",\n    \"consumes\": 0.61\n}"
+						}
+					]
+				},
+				{
+					"name": "Mark all as read",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/markAllAsRead",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"markAllAsRead"
+							]
+						},
+						"description": "Marca todas las notificaciones del usuario autenticado como leídas."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/notifications/markAllAsRead",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"notifications",
+										"markAllAsRead"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "722428c301ff2dac50ca03ec3ade75cf"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 20:00:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"message\": \"Todas las notificaciones se han marcado como leídas\"\n    },\n    \"given\": \"2024-08-19 14:00:26 America/El_Salvador\",\n    \"consumes\": 0.55\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Resolutions",
+			"item": [
+				{
+					"name": "Generate resolution",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_procedure\" : 7\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pdf/generate-resolution",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pdf",
+								"generate-resolution"
+							]
+						},
+						"description": "Crea una nueva resolución para un trámite específico. Esta acción genera el documento oficial que contiene la decisión o resolución sobre el trámite."
+					},
+					"response": []
+				},
+				{
+					"name": "Sign resolution",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"procedure_id\": 7,\r\n    \"user_id\": 1,\r\n    \"password\": \"pass1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/sign/resolution",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"sign",
+								"resolution"
+							]
+						},
+						"description": "Aplica una firma digital a una resolución generada previamente, oficializando su validez y asegurando la integridad del documento."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"procedure_id\": 7,\r\n    \"user_id\": 1,\r\n    \"password\": \"pass1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/sign/resolution",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"sign",
+										"resolution"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "53ab9c5c3521f0cd51ad428941a0cc08;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 20:01:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"url\": \"https://storage.googleapis.com/zacate-externo-v2/resolutionsigned/89/166c37e011313c.pdf?GoogleAccessId=gsv018-002-dev%40appspot.gserviceaccount.com&Expires=1724133600&Signature=qPNeXERZ0rbsL42lE45k7CtVWwB175oIxSZXyfFQvRn6kszpCqtZSgg2XJ9yIXqRU%2BhtLAS8umXCY1FsyX0pUqXC87q6B7%2F7YlAdI1KnzGdKkw2xLpol7N5Ek6NqWemNFy82PJdaszGKYQy8UIvq2u3aOvZm%2F%2BRI2uAJ6kMkciUccCLNeHUMghktDsVTYOdF8KlRsLYzEBEtRsLpIsmow41mu4sspt0xnOuBEylHmGvA7WgIzViKHYzZuIrLMPUb2B5gnPgP0KUzj9e8fFDyM146h2oy1GqlOZZn7KnoZihTKkJ0GXunpc8kLALVxwmnaFB455f%2B%2F5wsR2B6U1zMrg%3D%3D\"\n    },\n    \"given\": \"2024-08-19 14:01:49 America/El_Salvador\",\n    \"consumes\": 10.82\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Collect",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/collect/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"collect",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/collect/",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"collect",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "88ca2927e56366ca39dbb6248ccbe73d;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 23:41:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"procedures\": [\n            {\n                \"id\": 8,\n                \"entity_name\": \"NO* HU****** MA****** CO****\",\n                \"procedure_type\": 1,\n                \"status_id\": 1,\n                \"created_at\": \"2024-08-19T17:46:35.000000Z\"\n            },\n            {\n                \"id\": 9,\n                \"entity_name\": \"NO* HU****** MA****** CO****\",\n                \"procedure_type\": 2,\n                \"status_id\": 1,\n                \"created_at\": \"2024-08-19T20:53:05.000000Z\"\n            },\n            {\n                \"id\": 10,\n                \"entity_name\": \"NO* HU****** MA****** CO****\",\n                \"procedure_type\": 3,\n                \"status_id\": 1,\n                \"created_at\": \"2024-08-19T20:54:29.000000Z\"\n            },\n            {\n                \"id\": 11,\n                \"entity_name\": \"NO* HU****** MA****** CO****\",\n                \"procedure_type\": 1,\n                \"status_id\": 1,\n                \"created_at\": \"2024-08-19T21:00:50.000000Z\"\n            },\n            {\n                \"id\": 12,\n                \"entity_name\": \"NO* HU****** MA****** CO****\",\n                \"procedure_type\": 1,\n                \"status_id\": 1,\n                \"created_at\": \"2024-08-19T21:51:27.000000Z\"\n            }\n        ],\n        \"paginate\": {\n            \"total\": 5,\n            \"perPage\": 10,\n            \"currentPage\": 1,\n            \"lastPage\": 1,\n            \"firstItem\": 1,\n            \"lastItem\": 5,\n            \"nextPageUrl\": null,\n            \"previousPageUrl\": null\n        }\n    },\n    \"given\": \"2024-08-19 17:41:48 America/El_Salvador\",\n    \"consumes\": 0.76\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procedure_id\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/collect/get",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"collect",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"procedure_id\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/collect/get",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"collect",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "4b3baaf2cf14dcb7359eaab65360b3a8;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 23:45:32 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"id\": 7,\n        \"procedure_num\": \"RT-2024-08-19-7\",\n        \"entity_id\": 80,\n        \"procedures_information\": {\n            \"project\": {\n                \"name\": \"ajksdajksdajkdadjk\",\n                \"description\": \"jasjkadjkadsjkad\",\n                \"total_budget\": \"1221\",\n                \"total_develop_area\": \"1212\"\n            },\n            \"location\": {\n                \"address\": \"Una direccion cambiada\",\n                \"latitude\": \"13.505884497758343\",\n                \"longitude\": \"-88.87497399948121\",\n                \"rural_use\": \"Habitacional\",\n                \"urban_use\": \"Zona edificada\",\n                \"property_of\": \"RAMIREZ DEL CID, FRANCISCO ANTONIO(SIRyC-RPRH-->55074018-00000)\",\n                \"parcela_area\": \"1133.1708\",\n                \"clave_catastral\": \"0821U15-613\",\n                \"centro_historico\": \"0\"\n            }\n        },\n        \"procedures_type\": {\n            \"id\": 2,\n            \"name\": \"Rotulación\",\n            \"active\": 1,\n            \"cost\": 15\n        },\n        \"responsible_professional_id\": 21,\n        \"property_owner_id\": 20,\n        \"historical_procedure_id\": 380,\n        \"is_payed\": 1,\n        \"is_archived\": 0,\n        \"created_at\": \"2024-08-19T16:46:24.000000Z\",\n        \"entity\": {\n            \"id\": 80,\n            \"name\": \"RE** AL***** VA***** CO*****\"\n        },\n        \"property_owner\": {\n            \"id\": 20,\n            \"user_id\": 31,\n            \"name\": \"AN**** AL***** CA**** GA****\",\n            \"dui\": \"04883794-6\",\n            \"nit\": null,\n            \"email\": \"alessandro.rivas+usuarioprueba@goes.gob.sv\",\n            \"phone\": null\n        },\n        \"responsible_professional\": {\n            \"id\": 21,\n            \"user_id\": 31,\n            \"name\": \"JE**** ER***** ZE**** VI******\",\n            \"dui\": \"04221328-3\",\n            \"nit\": null,\n            \"email\": \"alessandro.rivas+usuarioprueba3@goes.gob.sv\",\n            \"phone\": \"7398-3939\"\n        },\n        \"historical_procedure\": [\n            {\n                \"id\": 358,\n                \"procedure_id\": 7,\n                \"status_id\": 1,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T16:46:28.000000Z\",\n                \"updated_at\": \"2024-08-19T16:46:28.000000Z\",\n                \"status\": {\n                    \"id\": 1,\n                    \"name\": \"Pendiente de pago\",\n                    \"description\": \"El trámite está pendiente de pago.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 360,\n                \"procedure_id\": 7,\n                \"status_id\": 2,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:05:03.000000Z\",\n                \"updated_at\": \"2024-08-19T17:05:03.000000Z\",\n                \"status\": {\n                    \"id\": 2,\n                    \"name\": \"Iniciado\",\n                    \"description\": \"Trámite iniciado, en proceso de revisión inicial.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 361,\n                \"procedure_id\": 7,\n                \"status_id\": 3,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:05:40.000000Z\",\n                \"updated_at\": \"2024-08-19T17:05:40.000000Z\",\n                \"status\": {\n                    \"id\": 3,\n                    \"name\": \"En revisión\",\n                    \"description\": \"Trámite en proceso de revisión detallada por un técnico.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 362,\n                \"procedure_id\": 7,\n                \"status_id\": 4,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:06:47.000000Z\",\n                \"updated_at\": \"2024-08-19T17:06:47.000000Z\",\n                \"status\": {\n                    \"id\": 4,\n                    \"name\": \"Observado\",\n                    \"description\": \"Trámite observado, requiere información adicional.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 363,\n                \"procedure_id\": 7,\n                \"status_id\": 5,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:07:38.000000Z\",\n                \"updated_at\": \"2024-08-19T17:07:38.000000Z\",\n                \"status\": {\n                    \"id\": 5,\n                    \"name\": \"Subsanado\",\n                    \"description\": \"Trámite subsanado, se ha entregado la información requerida.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 364,\n                \"procedure_id\": 7,\n                \"status_id\": 6,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:09:29.000000Z\",\n                \"updated_at\": \"2024-08-19T17:09:29.000000Z\",\n                \"status\": {\n                    \"id\": 6,\n                    \"name\": \"En inspección\",\n                    \"description\": \"Trámite en inspección, se están verificando los requisitos.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 365,\n                \"procedure_id\": 7,\n                \"status_id\": 7,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:16:03.000000Z\",\n                \"updated_at\": \"2024-08-19T17:16:03.000000Z\",\n                \"status\": {\n                    \"id\": 7,\n                    \"name\": \"Inspeccionado\",\n                    \"description\": \"Trámite inspeccionado y listo para la resolución.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 366,\n                \"procedure_id\": 7,\n                \"status_id\": 9,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:16:21.000000Z\",\n                \"updated_at\": \"2024-08-19T17:16:21.000000Z\",\n                \"status\": {\n                    \"id\": 9,\n                    \"name\": \"Aprobado\",\n                    \"description\": \"Trámite aprobado exitosamente.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 367,\n                \"procedure_id\": 7,\n                \"status_id\": 11,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T17:16:51.000000Z\",\n                \"updated_at\": \"2024-08-19T17:16:51.000000Z\",\n                \"status\": {\n                    \"id\": 11,\n                    \"name\": \"Finalizado\",\n                    \"description\": \"Trámite finalizado con éxito.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 372,\n                \"procedure_id\": 7,\n                \"status_id\": 2,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:42:45.000000Z\",\n                \"updated_at\": \"2024-08-19T19:42:45.000000Z\",\n                \"status\": {\n                    \"id\": 2,\n                    \"name\": \"Iniciado\",\n                    \"description\": \"Trámite iniciado, en proceso de revisión inicial.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 373,\n                \"procedure_id\": 7,\n                \"status_id\": 9,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:43:13.000000Z\",\n                \"updated_at\": \"2024-08-19T19:43:13.000000Z\",\n                \"status\": {\n                    \"id\": 9,\n                    \"name\": \"Aprobado\",\n                    \"description\": \"Trámite aprobado exitosamente.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 374,\n                \"procedure_id\": 7,\n                \"status_id\": 8,\n                \"technical_user_id\": null,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:44:10.000000Z\",\n                \"updated_at\": \"2024-08-19T19:44:10.000000Z\",\n                \"status\": {\n                    \"id\": 8,\n                    \"name\": \"Denegado\",\n                    \"description\": \"Trámite denegado por falta de requerimientos.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 375,\n                \"procedure_id\": 7,\n                \"status_id\": 4,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:44:37.000000Z\",\n                \"updated_at\": \"2024-08-19T19:44:37.000000Z\",\n                \"status\": {\n                    \"id\": 4,\n                    \"name\": \"Observado\",\n                    \"description\": \"Trámite observado, requiere información adicional.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 376,\n                \"procedure_id\": 7,\n                \"status_id\": 6,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:44:54.000000Z\",\n                \"updated_at\": \"2024-08-19T19:44:54.000000Z\",\n                \"status\": {\n                    \"id\": 6,\n                    \"name\": \"En inspección\",\n                    \"description\": \"Trámite en inspección, se están verificando los requisitos.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 377,\n                \"procedure_id\": 7,\n                \"status_id\": 7,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:54:30.000000Z\",\n                \"updated_at\": \"2024-08-19T19:54:30.000000Z\",\n                \"status\": {\n                    \"id\": 7,\n                    \"name\": \"Inspeccionado\",\n                    \"description\": \"Trámite inspeccionado y listo para la resolución.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 378,\n                \"procedure_id\": 7,\n                \"status_id\": 3,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T19:55:05.000000Z\",\n                \"updated_at\": \"2024-08-19T19:55:05.000000Z\",\n                \"status\": {\n                    \"id\": 3,\n                    \"name\": \"En revisión\",\n                    \"description\": \"Trámite en proceso de revisión detallada por un técnico.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 379,\n                \"procedure_id\": 7,\n                \"status_id\": 11,\n                \"technical_user_id\": 1,\n                \"user_id\": 31,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T20:01:49.000000Z\",\n                \"updated_at\": \"2024-08-19T20:01:49.000000Z\",\n                \"status\": {\n                    \"id\": 11,\n                    \"name\": \"Finalizado\",\n                    \"description\": \"Trámite finalizado con éxito.\",\n                    \"active\": 1\n                }\n            },\n            {\n                \"id\": 380,\n                \"procedure_id\": 7,\n                \"status_id\": 2,\n                \"technical_user_id\": null,\n                \"user_id\": 27,\n                \"stage_id\": null,\n                \"commentary\": null,\n                \"active\": 1,\n                \"created_at\": \"2024-08-19T20:35:23.000000Z\",\n                \"updated_at\": \"2024-08-19T20:35:23.000000Z\",\n                \"status\": {\n                    \"id\": 2,\n                    \"name\": \"Iniciado\",\n                    \"description\": \"Trámite iniciado, en proceso de revisión inicial.\",\n                    \"active\": 1\n                }\n            }\n        ]\n    },\n    \"given\": \"2024-08-19 17:45:32 America/El_Salvador\",\n    \"consumes\": 0.93\n}"
+						}
+					]
+				},
+				{
+					"name": "Get infomation cost by id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procedure_id\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/collect/information",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"collect",
+								"information"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"procedure_id\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/collect/information",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"collect",
+										"information"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "a9cafc8c933df99ae4219933cc15231a;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 23:48:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"stage\": 0,\n        \"status\": 2,\n        \"type\": 2,\n        \"price\": 15,\n        \"user_name\": \"RE** AL***** VA***** CO*****\",\n        \"procedure_name\": \"Rotulación\",\n        \"created\": \"2024-08-19T16:46:24.000000Z\"\n    },\n    \"given\": \"2024-08-19 17:48:33 America/El_Salvador\",\n    \"consumes\": 0.79\n}"
+						}
+					]
+				},
+				{
+					"name": "Get statistics procedures dashboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/collect/statistics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"collect",
+								"statistics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://zacate-interno-v2-be-dot-gsv018-002-dev.nn.r.appspot.com/api/collect/statistics",
+									"protocol": "https",
+									"host": [
+										"zacate-interno-v2-be-dot-gsv018-002-dev",
+										"nn",
+										"r",
+										"appspot",
+										"com"
+									],
+									"path": [
+										"api",
+										"collect",
+										"statistics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "d64b24db52fa7b5a9ab91c25fbf51489"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Aug 2024 23:52:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": \"OK\",\n    \"data\": {\n        \"total\": 2,\n        \"unasigned\": 0,\n        \"asigned\": 0,\n        \"observed\": 0,\n        \"aproved\": 0,\n        \"denied\": 0,\n        \"finished\": 0,\n        \"signed\": 0\n    },\n    \"given\": \"2024-08-19 17:52:16 America/El_Salvador\",\n    \"consumes\": 0.61\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
